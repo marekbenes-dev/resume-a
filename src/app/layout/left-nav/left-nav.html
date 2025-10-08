@@ -1,0 +1,29 @@
+ <aside
+          class="md:sticky md:top-5 md:self-start md:pr-6 print:hidden hidden md:block"
+          aria-label="Section navigation"
+        >
+            <nav aria-label="Resume sections">
+      <ul class="space-y-1">
+        @for (section of sections; track section.id) {
+            <li key={section.id}>
+              <a
+                href="#{{section.id}}"
+                aria-current="isActive ? true : undefined"
+                click="handleClick(id)"
+                class="block rounded-md px-2 py-2 transition hover:bg-foreground/10 hover:text-foreground hover:dark:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+              >
+                <span aria-hidden="true">{{section.label}}</span>
+              </a>
+            </li>
+        }
+
+      </ul>
+    </nav>
+          <footer class="mt-6 text-sm space-y-1">
+            <p><a class="underline decoration-slate-300 underline-offset-2" href="mailto:benes.developer@gmail.com">benes.developer@gmail.com</a></p>
+            <p><a class="underline decoration-slate-300 underline-offset-2" href="https://github.com/marekbenes-dev" target="_blank" rel="noopener noreferrer">github.com/marekbenes-dev</a></p>
+          </footer>
+          <div class="mt-3">
+            <app-theme-toggle></app-theme-toggle>
+          </div>
+        </aside>

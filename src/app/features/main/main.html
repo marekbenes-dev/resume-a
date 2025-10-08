@@ -1,0 +1,117 @@
+<!-- Inject JSON-LD like Next.js <Script type="application/ld+json"> -->
+<app-json-ld [jsonLd]="personJsonLd"></app-json-ld>
+
+  <main id="content" tabindex="-1" class="pb-12 pt-6 text-slate-800 dark:text-slate-100">
+    <header class="flex flex-col pb-8 flex-shrink-0">
+      <h1 class="font-semibold text-2xl">Marek Beneš</h1>
+      <span class="font-medium text-lg">Front End Developer</span>
+    </header>
+
+    <section id="about" aria-labelledby="about-h" class="mb-10">
+      <h2 id="about-h" tabindex="-1" class="text-xl font-semibold border-b border-foreground/20 py-4">About Me</h2>
+      <div>
+        <ul class="list-[square] list-inside space-y-1 py-4">
+          <li>Front End development</li>
+          <li>TypeScript, Angular, Next.js</li>
+          <li>6+ years development experience</li>
+          <li>Father to three kids</li>
+          <li>Cyclist and runner</li>
+          <li>Intermittent fasting enthusiast</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="experience" aria-labelledby="experience-h" class="mb-10">
+      <h2 id="experience-h" tabindex="-1" class="text-xl font-semibold border-b border-foreground/20 py-4">Experience</h2>
+      <app-experience-list [items]="experience"></app-experience-list>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-h" class="mb-10">
+      <h2 id="projects-h" tabindex="-1" class="text-xl font-semibold border-b border-foreground/20 py-4">Projects</h2>
+
+      <article aria-labelledby="proj-1-h" class="mt-3">
+        <h3 id="proj-1-h" class="font-semibold">
+          <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-500"
+             href="https://topten-segments.vercel.app/" target="_blank" rel="noopener noreferrer">
+            Strava App
+          </a>
+        </h3>
+        <p class="text-sm">TypeScript, Next.js, Playwright</p>
+        <ul class="list-[square] text-sm pl-5 mt-2 space-y-1">
+          <li>Started project to learn Next.js, Playwright and Strava API</li>
+          <li>Displays Activities in more complex way</li>
+          <li>Allows in depth Starred segments overview</li>
+          <li>Enables you to search nearby attractive segments</li>
+          <li>Provides batch refactor activity functionality</li>
+        </ul>
+      </article>
+
+      <article aria-labelledby="proj-2-h" class="mt-3">
+        <h3 id="proj-2-h" class="font-semibold">
+          <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-500"
+             href="https://github.com/marekbenes-dev/the-Marek-app" target="_blank" rel="noopener noreferrer">
+            Personal time management app
+          </a>
+        </h3>
+        <p class="text-sm">TypeScript, Angular, Express, Node, MongoDB</p>
+        <ul class="list-[square] text-sm pl-5 mt-2 space-y-1">
+          <li>App built in MEAN stack to provide an easy way to schedule activites and manage family finances</li>
+          <li>Used to learn MEAN stack, previously hosted by Heroku, now to be moved to Vercel</li>
+        </ul>
+      </article>
+
+      <article aria-labelledby="proj-3-h" class="mt-3">
+        <h3 id="proj-3-h" class="font-semibold">
+          <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-500"
+             href="https://github.com/marekbenes-dev/auto-select-directive" target="_blank" rel="noopener noreferrer">
+            Custom AngularJS autoselect directive
+          </a>
+        </h3>
+        <p class="text-sm">JavaScript, AngularJS</p>
+        <ul class="list-[square] text-sm pl-5 mt-2 space-y-1">
+          <li>Built in CompuGroup to provide a stable and maintainable autoselect</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-h" class="mb-10">
+      <h2 id="skills-h" tabindex="-1" class="text-xl font-semibold border-b border-foreground/20 py-4">Skills</h2>
+      <ul class="grid md:grid-cols-1 grid-cols-2 gap-x-8 py-4 gap-y-1 list-[square] list-inside">
+        <li><strong>Front end:</strong> TypeScript • Angular (RxJS, NgRx) • React • Next.js • Tailwind CSS</li>
+        <li><strong>Back end:</strong> Node.js (Express/Nest basics) • REST/GraphQL</li>
+        <li><strong>Testing:</strong> Playwright (e2e) • Jest/Vitest • Testing Library</li>
+        <li><strong>Practices:</strong> A11y • Core Web Vitals • SSR/SSG/ISR • SEO • CI/CD • Design systems</li>
+        <li><strong>Observability:</strong> Sentry • RUM • Web Vitals monitoring</li>
+      </ul>
+    </section>
+
+    <section id="education" aria-labelledby="education-h" class="mb-10">
+      <h2 id="education-h" tabindex="-1" class="text-xl font-semibold border-b border-foreground/20 py-4">Education</h2>
+      <p class="py-4"><strong>Psychology</strong>, PVŠPS <time dateTime="2021">2021</time></p>
+      <p>Bachelor in psychology</p>
+    </section>
+
+    <section id="last-race" aria-labelledby="last-race-h" class="mb-10">
+      <h2 id="last-race-h" tabindex="-1" class="text-xl font-semibold border-b border-foreground/20 py-4">Last Race</h2>
+      <div class="py-4">
+        <app-strava-embed activityId="16041627658"></app-strava-embed>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h" tabindex="-1" class="text-xl font-semibold border-b border-foreground/20 py-4">Contact</h2>
+      <p class="py-4">
+        Email:
+        <a class="underline decoration-slate-300 underline-offset-2" href="mailto:benes.developer@gmail.com">benes.developer@gmail.com</a><br />
+        LinkedIn:
+        <a class="underline decoration-slate-300 underline-offset-2"
+           href="https://www.linkedin.com/in/marek-beneš-936279154//" target="_blank" rel="noopener noreferrer">
+           /in/marek-beneš-936279154/
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="text-xs text-foreground/60 flex flex-row gap-2 items-center font-semibold">
+    © {{ currentYear }} Marek Beneš
+  </footer>
