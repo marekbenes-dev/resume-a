@@ -7,9 +7,8 @@ describe('ExperienceListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExperienceListComponent]
-    })
-    .compileComponents();
+      imports: [ExperienceListComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ExperienceListComponent);
     component = fixture.componentInstance;

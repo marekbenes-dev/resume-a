@@ -1,33 +1,29 @@
 <div class="py-4 px-1">
   <div class="text-md font-text flex flex-col gap-y-16">
     @for (it of items; track it.title) {
-            <article
-      class="flex flex-col"
-    >
-      <div class="flex flex-col gap-y-4 md:flex-row md:gap-x-4">
-        <p class="text-sm min-w-[120px] mt-0.5 font-semibold text-foreground/60">
-          {{ it.period }}
-        </p>
+      <article class="flex flex-col">
+        <div class="flex flex-col gap-y-4 md:flex-row md:gap-x-4">
+          <p class="text-sm min-w-[120px] mt-0.5 font-semibold text-foreground/60">
+            {{ it.period }}
+          </p>
 
-        <div class="flex flex-col gap-y-2">
-          <div>
-            <p class="font-semibold">{{ it.title }}</p>
-            <p class="text-foreground/80">{{ it.company }}</p>
-            <p class="text-sm text-foreground/60">{{ it.location }}</p>
+          <div class="flex flex-col gap-y-2">
+            <div>
+              <p class="font-semibold">{{ it.title }}</p>
+              <p class="text-foreground/80">{{ it.company }}</p>
+              <p class="text-sm text-foreground/60">{{ it.location }}</p>
+            </div>
+
+            <ul class="list-[square] list-inside">
+              @for (b of it.bullets; track b) {
+                <li class="text-sm">
+                  {{ b }}
+                </li>
+              }
+            </ul>
           </div>
-
-          <ul class="list-[square] list-inside">
-            @for (b of it.bullets; track b) {
-<li
-              class="text-sm"
-            >
-              {{ b }}
-            </li>
-            }
-          </ul>
         </div>
-      </div>
-    </article>
+      </article>
     }
   </div>
 </div>

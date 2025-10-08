@@ -1,4 +1,11 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, inject, PLATFORM_ID, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  PLATFORM_ID,
+  signal,
+} from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -11,7 +18,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
       (click)="toggle()"
       aria-label="Toggle dark mode"
     >
-       <span aria-hidden="true" className="text-base leading-none">
+      <span aria-hidden="true" className="text-base leading-none">
         {{ icon() }}
       </span>
       <span className="select-none">Switch Mode</span>
@@ -30,15 +37,13 @@ export class ThemeToggleComponent implements AfterViewInit {
 
     const stored = localStorage.getItem('theme');
     const prefersDark =
-      typeof window !== 'undefined' &&
-      window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+      typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
 
     const useDark = stored ? stored === 'dark' : !!prefersDark;
 
     this.switchIcon();
     this.doc.documentElement.classList.toggle('dark', useDark);
   }
-  
 
   switchIcon(): void {
     this.icon.set(this.doc.documentElement.classList.contains('dark') ? '🌙' : '🌞');

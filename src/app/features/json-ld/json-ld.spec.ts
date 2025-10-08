@@ -8,9 +8,8 @@ describe('JsonLdComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [JsonLdComponent]
-    })
-    .compileComponents();
+      imports: [JsonLdComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(JsonLdComponent);
     component = fixture.componentInstance;

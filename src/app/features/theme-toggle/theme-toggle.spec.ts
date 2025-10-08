@@ -3,13 +3,12 @@ import { ThemeToggleComponent } from './theme-toggle';
 
 describe('ThemeToggle', () => {
   let component: ThemeToggleComponent;
-  let fixture: ComponentFixture<ThemeToggle>;
+  let fixture: ComponentFixture<ThemeToggleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ThemeToggleComponent]
-    })
-    .compileComponents();
+      imports: [ThemeToggleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ThemeToggleComponent);
     component = fixture.componentInstance;

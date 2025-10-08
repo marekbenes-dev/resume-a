@@ -10,16 +10,16 @@ interface Section {
   selector: 'app-left-nav',
   imports: [ThemeToggleComponent],
   templateUrl: './left-nav.html',
-  styles: []
+  styles: [],
 })
 export class LeftNavComponent {
- sections: Section[] = [
-  { id: "about",   label: "About" },
-  { id: "experience",label: "Experience" },
-  { id: "projects",  label: "Projects" },
-  { id: "skills",    label: "Skills" },
-  { id: "education", label: "Education" },
-  { id: "last-race", label: "Last Race" },
-  { id: "contact",   label: "Contact" },
-];
+  sections: Section[] = [
+    { id: 'about', label: 'About' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'education', label: 'Education' },
+    { id: 'last-race', label: 'Last Race' },
+    { id: 'contact', label: 'Contact' },
+  ];
 }

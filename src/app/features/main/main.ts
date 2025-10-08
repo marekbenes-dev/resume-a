@@ -19,24 +19,19 @@ type ExperienceItem = {
 
 @Component({
   selector: 'app-main',
-  imports: [
-    CommonModule,
-    ExperienceListComponent,
-    JsonLdComponent,
-    StravaEmbedComponent
-  ],
+  imports: [CommonModule, ExperienceListComponent, JsonLdComponent, StravaEmbedComponent],
   templateUrl: './main.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainComponent {
   readonly sections: NavSection[] = [
-    { id: 'about',       label: 'About' },
-    { id: 'experience',  label: 'Experience' },
-    { id: 'projects',    label: 'Projects' },
-    { id: 'skills',      label: 'Skills' },
-    { id: 'education',   label: 'Education' },
-    { id: 'last-race',   label: 'Last Race' },
-    { id: 'contact',     label: 'Contact' },
+    { id: 'about', label: 'About' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'education', label: 'Education' },
+    { id: 'last-race', label: 'Last Race' },
+    { id: 'contact', label: 'Contact' },
   ];
 
   readonly experience: ExperienceItem[] = [
@@ -88,9 +83,7 @@ export class MainComponent {
       title: 'Front End Developer',
       company: 'CompuGroup Medical',
       location: 'Prague, Czechia',
-      bullets: [
-        'Contributed to the development of medical platform using AngularJS',
-      ],
+      bullets: ['Contributed to the development of medical platform using AngularJS'],
     },
   ];
 

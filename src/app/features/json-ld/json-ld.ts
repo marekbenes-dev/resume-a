@@ -1,5 +1,15 @@
 import { isPlatformBrowser } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DOCUMENT, inject, Input, OnDestroy, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DOCUMENT,
+  inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+  Renderer2,
+} from '@angular/core';
 
 @Component({
   selector: 'app-json-ld',
@@ -17,11 +27,11 @@ export class JsonLdComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // only run on the server
-    if (this.isBrowser) return; 
+    if (this.isBrowser) return;
 
     this.el = this.renderer.createElement('script');
 
-    if (this.el) {  
+    if (this.el) {
       this.el.type = 'application/ld+json';
       this.el.text = JSON.stringify(this.jsonLd);
       this.renderer.appendChild(this.doc.head, this.el);

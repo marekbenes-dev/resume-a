@@ -8,9 +8,8 @@ describe('StravaEmbed', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StravaEmbed]
-    })
-    .compileComponents();
+      imports: [StravaEmbed],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(StravaEmbed);
     component = fixture.componentInstance;

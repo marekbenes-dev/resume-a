@@ -5,7 +5,7 @@ import { LayoutComponent } from './layout/layout';
   selector: 'app-root',
   imports: [LayoutComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   protected readonly title = signal('resume-a');
