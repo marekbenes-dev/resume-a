@@ -1,3 +1,17 @@
 {
-  "dependencyInstallCommand": "yarn install"
+  "dependencyInstallCommand": "yarn install",
+  "build": {
+    "production": {
+      "env": {},
+       "packageJsonScripts": {
+        "build:production": "build"
+      }
+    },
+    "development": {
+      "env": {},
+       "packageJsonScripts": {
+        "build:production": "build"
+      }
+    }
+  }
 }
