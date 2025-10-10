@@ -2,6 +2,7 @@
   "dependencyInstallCommand": "yarn install",
   "apps": [
     {
+      "appId": "dev.marekbenes.resume",
       "name": "resume-a",
       "build": {
         "production": {
