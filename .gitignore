@@ -41,3 +41,15 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# iOS build artifacts and user-specific data
+/iOS/App/build/
+/iOS/App/DerivedData/
+/iOS/App/*.ipa
+/iOS/App/*.dSYM
+/iOS/App/*.xcuserstate
+/iOS/App/xcuserdata/
+
+# CocoaPods
+/iOS/App/Pods/
+/iOS/App/Podfile.lock
