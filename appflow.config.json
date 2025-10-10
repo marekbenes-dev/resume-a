@@ -1,11 +1,16 @@
 {
   "dependencyInstallCommand": "yarn install",
-  "build": {
-    "production": {
-      "env": {}
-    },
-    "development": {
-      "env": {}
+  "apps": [
+    {
+      "name": "resume-a",
+      "build": {
+        "production": {
+          "env": {}
+        },
+        "development": {
+          "env": {}
+        }
+      }
     }
-  }
+  ]
 }
