@@ -1,5 +1,5 @@
 {
-  "dependencyInstallCommand": "yarn install",
+  "dependencyInstallCommand": "npm install",
   "apps": [
     {
       "appId": "03c34146",
