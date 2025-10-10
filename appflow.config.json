@@ -4,13 +4,13 @@
     "production": {
       "env": {},
        "packageJsonScripts": {
-        "build:production": "build"
+        "build": "build"
       }
     },
     "development": {
       "env": {},
        "packageJsonScripts": {
-        "build:production": "build"
+        "build": "build"
       }
     }
   }
