@@ -6,6 +6,23 @@
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <meta name="color-scheme" content="light dark">
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme'); // "dark" | "light" | null
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var useDark = stored ? stored === 'dark' : !!prefersDark;
+
+          var root = document.documentElement;
+          if (useDark) root.classList.add('dark'); else root.classList.remove('dark');
+          // Help native form controls choose correct palette:
+          root.style.colorScheme = useDark ? 'dark' : 'light';
+        } catch (e) {
+          // fail closed: do nothing
+        }
+      })();
+    </script>
   </head>
   <body>
     <app-root></app-root>
