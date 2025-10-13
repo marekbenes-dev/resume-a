@@ -40,11 +40,6 @@ app.use(async (req, res, next) => {
     const response = await angularApp.handle(req);
     if (!response) return next();
 
-    // Only touch the root document and only on 200 OK
-    if (!response.headers.get('Content-Type')?.includes('html') || response.status !== 200) {
-      return writeResponseToNodeResponse(response, res);
-    }
-
     const theme = getThemeFromRequest(req); // 'dark' | 'light' | undefined
 
     if (theme !== 'dark') {
