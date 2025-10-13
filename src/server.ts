@@ -41,12 +41,12 @@ app.use(async (req, res, next) => {
     if (!response) return next();
 
     // Only touch the root document and only on 200 OK
-    if (req.path !== '/' || response.status !== 200) {
+    if (!response.headers.get('Content-Type')?.includes('html') || response.status !== 200) {
       return writeResponseToNodeResponse(response, res);
     }
 
     const theme = getThemeFromRequest(req); // 'dark' | 'light' | undefined
-    console.log(`Theme requested: ${theme}`);
+
     if (theme !== 'dark') {
       // light/auto → don’t modify; just send as-is
       return writeResponseToNodeResponse(response, res);
@@ -55,8 +55,6 @@ app.use(async (req, res, next) => {
     // Dark: inject once, using a simple token replace
     const html = await response.text();
     const injected = html.replace('<html', '<html class="dark" style="color-scheme:dark"');
-
-    console.log(`Injecting dark mode into <html> element`);
 
     const headers = new Headers(response.headers);
     // Body changed → drop ETag (and optionally weaken caching)
