@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "build:verify": "NG_CLI_ANALYTICS=false ng build --configuration production --no-progress",
     "test": "ng test",
-    "serve:ssr:resume-a": "node dist/resume-a/server/server.mjs",
+    "build:ssr": "ng build --configuration production",
+    "preview:ssr": "npm run build:ssr && node dist/resume-a/server/server.mjs",
+    "dev:ssr": "ng run resume-a:serve-ssr",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "ng lint"

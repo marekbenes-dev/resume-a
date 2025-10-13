@@ -32,6 +32,8 @@ export class ThemeToggleComponent implements AfterViewInit {
 
     const useDark = stored ? stored === 'dark' : !!prefersDark;
 
+    this.doc.cookie = `theme=${useDark ? 'dark' : 'light'}; Path=/; Max-Age=31536000; SameSite=Lax`;
+
     this.switchIcon();
     this.doc.documentElement.classList.toggle('dark', useDark);
   }

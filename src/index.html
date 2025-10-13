@@ -5,24 +5,35 @@
     <title>Marek Beneš - Resume</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light dark" />
     <script>
       (function () {
         try {
-          var stored = localStorage.getItem('theme'); // "dark" | "light" | null
-          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var useDark = stored ? stored === 'dark' : !!prefersDark;
+          // 1) Cookie from server-side (so first SSR paint matches)
+          var m = document.cookie && document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);
+          var fromCookie = m && m[1];
+
+          // 2) LocalStorage (client-side preference)
+          var stored = !fromCookie && localStorage.getItem('theme'); // only read if no cookie
+
+          // 3) System preference
+          var prefersDark =
+            window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+          var useDark = fromCookie
+            ? fromCookie === 'dark'
+            : stored
+              ? stored === 'dark'
+              : !!prefersDark;
 
           var root = document.documentElement;
-          if (useDark) root.classList.add('dark'); else root.classList.remove('dark');
-          // Help native form controls choose correct palette:
+          root.classList.toggle('dark', useDark);
           root.style.colorScheme = useDark ? 'dark' : 'light';
-        } catch (e) {
-          // fail closed: do nothing
-        }
+        } catch {}
       })();
     </script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <meta name="color-scheme" content="light dark" />
   </head>
   <body>
     <app-root></app-root>
