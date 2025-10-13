@@ -24,11 +24,6 @@ function getThemeFromRequest(req: express.Request): 'dark' | 'light' | undefined
   return undefined;
 }
 
-function isHtmlResponse(res: Response | undefined) {
-  const ct = res?.headers.get('content-type') || '';
-  return ct.includes('text/html');
-}
-
 /**
  * Serve static files from /browser
  */
@@ -40,42 +35,43 @@ app.use(
   }),
 );
 
-/**
- * SSR handler with theme injection.
- */
 app.use(async (req, res, next) => {
   try {
     const response = await angularApp.handle(req);
     if (!response) return next();
 
-    // Ask the browser to send the Client Hint on subsequent requests.
-    res.setHeader('Accept-CH', 'Sec-CH-Prefers-Color-Scheme');
-
-    if (!isHtmlResponse(response)) {
-      // Non-HTML: just pipe through.
+    // Only touch the root document and only on 200 OK
+    if (req.path !== '/' || response.status !== 200) {
       return writeResponseToNodeResponse(response, res);
     }
 
+    const theme = getThemeFromRequest(req); // 'dark' | 'light' | undefined
+    console.log(`Theme requested: ${theme}`);
+    if (theme !== 'dark') {
+      // light/auto → don’t modify; just send as-is
+      return writeResponseToNodeResponse(response, res);
+    }
+
+    // Dark: inject once, using a simple token replace
     const html = await response.text();
-    const theme = getThemeFromRequest(req);
+    const injected = html.replace('<html', '<html class="dark" style="color-scheme:dark"');
 
-    // Inject class/style onto <html …> to avoid first-paint flicker.
-    const injected =
-      theme === 'dark'
-        ? html.replace('<html', '<html class="dark" style="color-scheme:dark"')
-        : theme === 'light'
-          ? html.replace('<html', '<html style="color-scheme:light"')
-          : html;
+    console.log(`Injecting dark mode into <html> element`);
 
-    // Rebuild a Response with identical status/headers.
     const headers = new Headers(response.headers);
-    const themedResponse = new Response(injected, {
-      status: response.status,
+    // Body changed → drop ETag (and optionally weaken caching)
+    headers.delete('etag');
+    if (!headers.has('content-type')) {
+      headers.set('content-type', 'text/html; charset=utf-8');
+    }
+
+    const themed = new Response(injected, {
+      status: 200,
       statusText: response.statusText,
       headers,
     });
 
-    return writeResponseToNodeResponse(themedResponse, res);
+    return writeResponseToNodeResponse(themed, res);
   } catch (err) {
     return next(err);
   }

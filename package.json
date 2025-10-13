@@ -9,7 +9,7 @@
     "build:verify": "NG_CLI_ANALYTICS=false ng build --configuration production --no-progress",
     "test": "ng test",
     "build:ssr": "ng build --configuration production",
-    "preview:ssr": "npm run build:ssr && node dist/resume-a/server/server.mjs",
+    "preview:ssr": "NODE_OPTIONS=--enable-source-maps npm run build:ssr && node dist/resume-a/server/server.mjs",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "ng lint"
