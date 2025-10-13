@@ -1,16 +1,8 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  PLATFORM_ID,
-  signal,
-} from '@angular/core';
+import { AfterViewInit, Component, inject, PLATFORM_ID, signal } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-theme-toggle',
-  standalone: true,
   template: `
     <button
       type="button"
@@ -24,7 +16,6 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
       <span className="select-none">Switch Mode</span>
     </button>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThemeToggleComponent implements AfterViewInit {
   private platformId = inject(PLATFORM_ID);

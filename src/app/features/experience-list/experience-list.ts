@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export interface ExperienceItem {
   period: string;
@@ -10,13 +10,8 @@ export interface ExperienceItem {
 
 @Component({
   selector: 'app-experience-list',
-  standalone: true,
   templateUrl: './experience-list.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExperienceListComponent {
   @Input({ required: true }) items: ExperienceItem[] = [];
-
-  // Safe, generic trackBy for arrays where order is stable
-  trackByIndex = (index: number, _item: unknown) => index;
 }

@@ -1,6 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
-  ChangeDetectionStrategy,
   Component,
   DOCUMENT,
   inject,
@@ -13,9 +12,7 @@ import {
 
 @Component({
   selector: 'app-json-ld',
-  standalone: true,
   template: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JsonLdComponent implements OnInit, OnDestroy {
   @Input({ required: true }) jsonLd!: unknown;

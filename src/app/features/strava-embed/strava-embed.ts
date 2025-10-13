@@ -1,7 +1,6 @@
 import { isPlatformBrowser, DOCUMENT } from '@angular/common';
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   ElementRef,
   Input,
@@ -13,7 +12,6 @@ import {
 
 @Component({
   selector: 'app-strava-embed',
-  standalone: true,
   template: `
     <div #host>
       <div
@@ -25,7 +23,6 @@ import {
       ></div>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StravaEmbedComponent implements AfterViewInit {
   @Input({ required: true }) activityId!: string;
