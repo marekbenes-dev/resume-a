@@ -10,7 +10,6 @@
     "test": "ng test",
     "build:ssr": "ng build --configuration production",
     "preview:ssr": "npm run build:ssr && node dist/resume-a/server/server.mjs",
-    "dev:ssr": "ng run resume-a:serve-ssr",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "ng lint"
