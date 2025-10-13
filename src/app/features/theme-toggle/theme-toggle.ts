@@ -6,7 +6,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
   template: `
     <button
       type="button"
-      class="border px-3 py-1 rounded text-sm"
+      class="border px-3 py-1 rounded text-sm cursor-pointer"
       (click)="toggle()"
       aria-label="Toggle dark mode"
     >
@@ -26,13 +26,11 @@ export class ThemeToggleComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
 
-    const stored = localStorage.getItem('theme');
+    const stored = localStorage.getItem('marek-resume-theme');
     const prefersDark =
       typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
 
     const useDark = stored ? stored === 'dark' : !!prefersDark;
-
-    this.doc.cookie = `theme=${useDark ? 'dark' : 'light'}; Path=/; Max-Age=31536000; SameSite=Lax`;
 
     this.switchIcon();
     this.doc.documentElement.classList.toggle('dark', useDark);
@@ -45,7 +43,7 @@ export class ThemeToggleComponent implements AfterViewInit {
   toggle(): void {
     if (!this.isBrowser) return;
     const isDark = this.doc.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    localStorage.setItem('marek-resume-theme', isDark ? 'dark' : 'light');
     this.switchIcon();
   }
 }
